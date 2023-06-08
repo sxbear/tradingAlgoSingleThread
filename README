@@ -1,0 +1,9 @@
+Single Threaded Trading Algorithm
+-Solomon Bear
+
+Requirements:
+Must have curl library installed and properly linked at main directory so "#include <include\curl\curl.h>" is found properly.
+Must have nlohmann.
+
+Personalization:
+Modify config.json to include the proper keys
