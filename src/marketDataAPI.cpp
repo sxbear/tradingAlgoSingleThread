@@ -1,7 +1,7 @@
-#include <nlohmann/json.hpp>
 #include <optional>
 #include <iostream>
-#include "MarketDataAPI.h"
+#include "nlohmann/json.hpp"
+#include "../include/marketDataAPI.h"
 #include <include/curl/curl.h>
 
 //helper function to handle the data returned by libcurl

@@ -1,6 +1,6 @@
-#include "config.h"
+#include "../include/config.h"
 #include "nlohmann/json.hpp"
-#include "marketDataAPI.h"
+#include "../include/marketDataAPI.h"
 #include <iostream>
 #include <fstream>
 

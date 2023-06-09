@@ -1,4 +1,4 @@
-#include "Config.h"
+#include "../include/config.h"
 #include <fstream>
 #include <iostream>
 #include "nlohmann/json.hpp"
