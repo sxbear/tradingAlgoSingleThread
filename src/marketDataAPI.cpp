@@ -23,7 +23,6 @@ std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData(con
     // Create the URL for the API request
     std::string url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + symbol + "&apikey=" + apiKey;
 
-
     // Set up libcurl to make the request
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
@@ -34,6 +33,7 @@ std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData(con
 
     // Make the request
     CURLcode res = curl_easy_perform(curl);
+    std::cout << "Raw response: " << response << std::endl;
     
     // Check for errors in curl execution
     if (res != CURLE_OK) {
@@ -58,6 +58,7 @@ std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData(con
     // Parse the JSON response
     try {
         nlohmann::json jsonResponse = nlohmann::json::parse(response);
+        std::cout << "Formatted JSON response: " << jsonResponse.dump(4) << std::endl;
         std::vector<MarketDataPoint> dataPoints;
     
         for (const auto& [key, value] : jsonResponse["Time Series (Daily)"].items()) {

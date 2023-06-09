@@ -11,6 +11,7 @@ Config::Config(const std::string& filename) : fileReadSuccessfully(false) {
 
     // Check if the file was opened successfully
     if (!file.is_open()) {
+        std::cerr << "Cannot open file " << filename << std::endl;
         return;
     }
 

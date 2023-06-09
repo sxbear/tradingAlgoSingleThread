@@ -7,16 +7,13 @@
 int main() {
     // Load configuration
     Config config("../JSON/config.json"); // Pass in the config filename here
-
     // Verify if the file was read successfully
     if (!config.isFileRead()) {
         std::cerr << "Failed to read config file" << std::endl;
         return 1;
     }
-
     // Get API key from configuration
     std::string apiKey = config.getMarketDataAPIKey();  // Use the correct getter for the API key
-
     // Create MarketDataAPI object
     MarketDataAPI marketDataAPI(apiKey);
 
@@ -29,7 +26,6 @@ int main() {
         std::cerr << "Failed to get historical data" << std::endl;
         return 1;
     }
-
     // Print out data points
     for (const auto& point : *dataPoints) {
         std::cout << "Time: " << point.time << std::endl;
