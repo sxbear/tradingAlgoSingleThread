@@ -1,9 +1,10 @@
 Single Threaded Trading Algorithm
--Solomon Bear
+-Solomon Bear (June 2023)
 
 Requirements:
-Must have curl library installed and properly linked at main directory so "#include <include\curl\curl.h>" is found properly.
-Must have nlohmann.
+curl library must be properly installed.
+out_cygwin is how I have built the project.
+Open cygwin terminal, cd /cygdrive/path_to_cygwin_out(including drive letter)/cygwin_out, cmake .., make, ./TASTSXB
 
 Personalization:
 Modify config.json to include the proper keys
