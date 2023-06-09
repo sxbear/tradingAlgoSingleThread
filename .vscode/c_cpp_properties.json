@@ -4,7 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:\\curl-8.1.2_3-win64-mingw"
+                "C:\\curl-8.1.2_3-win64-mingw",
+                "C:\\json-develop\\include"
             ],
             "defines": [
                 "_DEBUG",

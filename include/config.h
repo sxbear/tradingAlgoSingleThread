@@ -5,7 +5,8 @@
 
 class Config {
 public:
-    Config(const std::string& filename);
+    Config();  // Default constructor
+    Config(const std::string& filename);  // Constructor with arguments
 
     std::string getMarketDataAPIKey() const;
     std::string getTradingAPIKey() const;

@@ -1,7 +1,9 @@
 #include "Config.h"
 #include <fstream>
 #include <iostream>
-#include <packages/json.hpp>
+#include "nlohmann/json.hpp"
+
+Config::Config() : fileReadSuccessfully(false) {}  // Default constructor implementation
 
 Config::Config(const std::string& filename) : fileReadSuccessfully(false) {
     // Open the file
