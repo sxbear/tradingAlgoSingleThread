@@ -1,7 +1,7 @@
 #include "../include/config.h"
 #include <fstream>
 #include <iostream>
-#include "nlohmann/json.hpp"
+#include "../include/nlohmann/json.hpp"
 
 Config::Config() : fileReadSuccessfully(false) {}  // Default constructor implementation
 

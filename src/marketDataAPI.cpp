@@ -1,8 +1,8 @@
 #include <optional>
 #include <iostream>
-#include "nlohmann/json.hpp"
+#include "../include/nlohmann/json.hpp"
 #include "../include/marketDataAPI.h"
-#include <include/curl/curl.h>
+#include "curl/curl.h"
 
 //helper function to handle the data returned by libcurl
 size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* userp) {
