@@ -3,6 +3,8 @@
 
 #include <string>
 #include <optional>
+#include <vector>
+#include "../include/config.h"
 #include "../include/nlohmann/json.hpp"
 
 struct MarketDataPoint {
@@ -16,13 +18,15 @@ struct MarketDataPoint {
 
 class MarketDataAPI {
 public:
-    MarketDataAPI(const std::string& apiKey);
+    MarketDataAPI(const std::string& apiKey, const Config& config);
 
     // Method to fetch historical market data
     std::optional<std::vector<MarketDataPoint>> getHistoricalData(const std::string& symbol, const std::string& interval);
+    std::string selectApiUrl(const Config& config);
 
 private:
     std::string apiKey;
+    Config config;
 };
 
 #endif

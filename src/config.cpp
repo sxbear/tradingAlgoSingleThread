@@ -1,6 +1,7 @@
 #include "../include/config.h"
 #include <fstream>
 #include <iostream>
+#include <vector>
 #include "../include/nlohmann/json.hpp"
 
 Config::Config() : fileReadSuccessfully(false) {}  // Default constructor implementation
@@ -24,6 +25,11 @@ Config::Config(const std::string& filename) : fileReadSuccessfully(false) {
         marketDataAPIKey = j["marketDataAPIKey"];
         tradingAPIKey = j["tradingAPIKey"];
 
+        // Set the API URLs
+        for (const auto& url : j["apiUrls"]) {
+            apiUrls.push_back(url);
+        }
+
         fileReadSuccessfully = true;
     }
     catch (const std::exception& e) {
@@ -39,6 +45,19 @@ std::string Config::getMarketDataAPIKey() const {
 
 std::string Config::getTradingAPIKey() const {
     return tradingAPIKey;
+}
+
+std::string Config::getApiUrl() const {
+    if(!apiUrls.empty()) {
+        return apiUrls.back(); // return the last element
+    }
+    else {
+        return ""; // return an empty string if the vector is empty
+    }
+}
+
+std::vector<std::string> Config::getAllApiUrls() const {
+    return apiUrls;
 }
 
 bool Config::isFileRead() const {

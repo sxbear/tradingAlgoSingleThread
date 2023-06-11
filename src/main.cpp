@@ -13,13 +13,13 @@ int main() {
         return 1;
     }
     // Get API key from configuration
-    std::string apiKey = config.getMarketDataAPIKey();  // Use the correct getter for the API key
+    std::string apiKey = config.getMarketDataAPIKey();
     // Create MarketDataAPI object
-    MarketDataAPI marketDataAPI(apiKey);
+    MarketDataAPI marketDataAPI(apiKey, config);
 
     // Make API call
-    std::string symbol = "MSFT";  // TODO: Replace with desired symbol
-    auto dataPoints = marketDataAPI.getHistoricalData(symbol, "Daily");  // Pass in the interval as per the API definition
+    std::string symbol = "MSFT";
+    auto dataPoints = marketDataAPI.getHistoricalData(symbol, "Daily");
 
     // Check if API call was successful
     if (!dataPoints) {

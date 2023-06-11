@@ -1,4 +1,15 @@
 {
     "marketDataAPIKey": "your_api_key_here",
-    "tradingAPIKey": "your_api_key_here"
+    "tradingAPIKey": "your_api_key_here",
+    "apiUrls": [
+        "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY",
+        "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED",
+        "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY",
+        "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED",
+        "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY",
+        "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED",
+        "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY",
+        "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED",
+        "https://www.alphavantage.co/query?function=GLOBAL_QUOTE"
+    ]
 }

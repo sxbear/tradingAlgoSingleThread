@@ -8,3 +8,6 @@ Open cygwin terminal, cd /cygdrive/path_to_cygwin_out(including drive letter)/cy
 
 Personalization:
 Modify config.json to include the proper keys
+
+Help:
+https://www.alphavantage.co/documentation/
