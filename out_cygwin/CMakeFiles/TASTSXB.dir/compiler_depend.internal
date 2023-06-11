@@ -126,6 +126,11 @@ CMakeFiles/TASTSXB.dir/src/config.cpp.o
  /usr/include/sys/errno.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/charconv.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/basic_string.tcc
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/vector
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_uninitialized.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_vector.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_bvector.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/vector.tcc
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/fstream
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/istream
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/ios
@@ -184,11 +189,6 @@ CMakeFiles/TASTSXB.dir/src/config.cpp.o
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/node_handle.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/unordered_map.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/erase_if.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/vector
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_uninitialized.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_vector.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_bvector.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/vector.tcc
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/pstl/execution_defs.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cstddef
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/iterator
@@ -447,6 +447,11 @@ CMakeFiles/TASTSXB.dir/src/main.cpp.o
  /usr/include/sys/errno.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/charconv.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/basic_string.tcc
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/vector
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_uninitialized.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_vector.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_bvector.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/vector.tcc
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/json.hpp
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/algorithm
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/utility
@@ -473,11 +478,6 @@ CMakeFiles/TASTSXB.dir/src/main.cpp.o
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/node_handle.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/unordered_map.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/erase_if.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/vector
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_uninitialized.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_vector.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_bvector.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/vector.tcc
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/pstl/execution_defs.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cstddef
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/iterator
@@ -633,6 +633,7 @@ CMakeFiles/TASTSXB.dir/src/main.cpp.o
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/marketDataAPI.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/optional
+ /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/config.h
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/json.hpp
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/iostream
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/fstream
@@ -796,7 +797,12 @@ CMakeFiles/TASTSXB.dir/src/marketDataAPI.cpp.o
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/ostream.tcc
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/istream
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/istream.tcc
- /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/json.hpp
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/vector
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_uninitialized.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_vector.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_bvector.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/vector.tcc
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/regex
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/algorithm
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_algo.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/algorithmfwd.h
@@ -818,20 +824,23 @@ CMakeFiles/TASTSXB.dir/src/marketDataAPI.cpp.o
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/node_handle.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/unordered_map.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/erase_if.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/vector
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_uninitialized.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_vector.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_bvector.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/vector.tcc
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/pstl/execution_defs.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cstddef
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bitset
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/iterator
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stream_iterator.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/locale
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_facets_nonio.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/ctime
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin/bits/time_members.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin/bits/messages_members.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/codecvt.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_facets_nonio.tcc
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_conv.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/unique_ptr.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/memory
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_raw_storage_iter.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/align.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bit
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/unique_ptr.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/shared_ptr.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/shared_ptr_base.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/allocated_ptr.h
@@ -841,16 +850,41 @@ CMakeFiles/TASTSXB.dir/src/marketDataAPI.cpp.o
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/atomic_lockfree_defines.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/backward/auto_ptr.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/pstl/glue_memory_defs.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/sstream
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/sstream.tcc
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/stack
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/deque
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_deque.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/deque.tcc
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_stack.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/map
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_tree.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_map.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_multimap.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cstring
+ /usr/include/string.h
+ /usr/include/strings.h
+ /usr/include/sys/string.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_constants.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_error.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_automaton.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_automaton.tcc
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_scanner.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_scanner.tcc
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_compiler.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_compiler.tcc
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex.tcc
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_executor.h
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_executor.tcc
+ /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/json.hpp
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cstddef
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/adl_serializer.hpp
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/detail/abi_macros.hpp
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/detail/conversions/from_json.hpp
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/forward_list
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/forward_list.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/forward_list.tcc
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/map
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_tree.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_map.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_multimap.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/valarray
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cmath
  /usr/include/math.h
@@ -895,30 +929,16 @@ CMakeFiles/TASTSXB.dir/src/marketDataAPI.cpp.o
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/detail/meta/call_std/end.hpp
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/json_fwd.hpp
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/detail/string_concat.hpp
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cstring
- /usr/include/string.h
- /usr/include/strings.h
- /usr/include/sys/string.h
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/detail/meta/identity_tag.hpp
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/detail/meta/std_fs.hpp
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/filesystem
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/fs_fwd.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/chrono
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/ratio
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/ctime
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/parse_numbers.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/fs_path.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/locale
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_facets_nonio.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin/bits/time_members.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin/bits/messages_members.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/codecvt.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_facets_nonio.tcc
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_conv.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/iomanip
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/quoted_string.h
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/sstream
- /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/sstream.tcc
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/codecvt
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/fs_dir.h
  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/fs_ops.h
@@ -951,6 +971,7 @@ CMakeFiles/TASTSXB.dir/src/marketDataAPI.cpp.o
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/detail/macro_unscope.hpp
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/marketDataAPI.h
+ /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/config.h
  /cygdrive/C/Users/solom/Documents/Github/TradingAlgoSingleThread/include/nlohmann/json.hpp
  /usr/include/curl/curl.h
  /usr/include/curl/curlver.h

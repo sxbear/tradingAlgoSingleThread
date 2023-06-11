@@ -125,6 +125,11 @@ CMakeFiles/TASTSXB.dir/src/config.cpp.o: ../src/config.cpp \
   /usr/include/sys/errno.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/charconv.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/basic_string.tcc \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/vector \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_uninitialized.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_vector.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_bvector.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/vector.tcc \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/fstream \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/istream \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/ios \
@@ -183,11 +188,6 @@ CMakeFiles/TASTSXB.dir/src/config.cpp.o: ../src/config.cpp \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/node_handle.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/unordered_map.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/erase_if.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/vector \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_uninitialized.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_vector.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_bvector.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/vector.tcc \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/pstl/execution_defs.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cstddef \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/iterator \
@@ -443,6 +443,11 @@ CMakeFiles/TASTSXB.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/include/sys/errno.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/charconv.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/basic_string.tcc \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/vector \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_uninitialized.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_vector.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_bvector.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/vector.tcc \
   ../include/nlohmann/json.hpp \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/algorithm \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/utility \
@@ -469,11 +474,6 @@ CMakeFiles/TASTSXB.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/node_handle.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/unordered_map.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/erase_if.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/vector \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_uninitialized.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_vector.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_bvector.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/vector.tcc \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/pstl/execution_defs.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cstddef \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/iterator \
@@ -629,6 +629,7 @@ CMakeFiles/TASTSXB.dir/src/main.cpp.o: ../src/main.cpp \
   ../include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
   ../include/marketDataAPI.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/optional \
+  ../include/config.h \
   ../include/nlohmann/json.hpp \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/iostream \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/fstream \
@@ -791,7 +792,12 @@ CMakeFiles/TASTSXB.dir/src/marketDataAPI.cpp.o: ../src/marketDataAPI.cpp \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/ostream.tcc \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/istream \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/istream.tcc \
-  ../include/nlohmann/json.hpp \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/vector \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_uninitialized.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_vector.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_bvector.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/vector.tcc \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/regex \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/algorithm \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_algo.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/algorithmfwd.h \
@@ -813,20 +819,23 @@ CMakeFiles/TASTSXB.dir/src/marketDataAPI.cpp.o: ../src/marketDataAPI.cpp \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/node_handle.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/unordered_map.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/erase_if.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/vector \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_uninitialized.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_vector.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_bvector.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/vector.tcc \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/pstl/execution_defs.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cstddef \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bitset \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/iterator \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stream_iterator.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/locale \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_facets_nonio.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/ctime \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin/bits/time_members.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin/bits/messages_members.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/codecvt.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_facets_nonio.tcc \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_conv.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/unique_ptr.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/memory \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_raw_storage_iter.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/align.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bit \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/unique_ptr.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/shared_ptr.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/shared_ptr_base.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/allocated_ptr.h \
@@ -836,16 +845,41 @@ CMakeFiles/TASTSXB.dir/src/marketDataAPI.cpp.o: ../src/marketDataAPI.cpp \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/atomic_lockfree_defines.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/backward/auto_ptr.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/pstl/glue_memory_defs.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/sstream \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/sstream.tcc \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/stack \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/deque \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_deque.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/deque.tcc \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_stack.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/map \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_tree.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_map.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_multimap.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cstring \
+  /usr/include/string.h \
+  /usr/include/strings.h \
+  /usr/include/sys/string.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_constants.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_error.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_automaton.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_automaton.tcc \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_scanner.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_scanner.tcc \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_compiler.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_compiler.tcc \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex.tcc \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_executor.h \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_executor.tcc \
+  ../include/nlohmann/json.hpp \
+  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cstddef \
   ../include/nlohmann/adl_serializer.hpp \
   ../include/nlohmann/detail/abi_macros.hpp \
   ../include/nlohmann/detail/conversions/from_json.hpp \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/forward_list \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/forward_list.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/forward_list.tcc \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/map \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_tree.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_map.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_multimap.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/valarray \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cmath \
   /usr/include/math.h \
@@ -890,30 +924,16 @@ CMakeFiles/TASTSXB.dir/src/marketDataAPI.cpp.o: ../src/marketDataAPI.cpp \
   ../include/nlohmann/detail/meta/call_std/end.hpp \
   ../include/nlohmann/json_fwd.hpp \
   ../include/nlohmann/detail/string_concat.hpp \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cstring \
-  /usr/include/string.h \
-  /usr/include/strings.h \
-  /usr/include/sys/string.h \
   ../include/nlohmann/detail/meta/identity_tag.hpp \
   ../include/nlohmann/detail/meta/std_fs.hpp \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/filesystem \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/fs_fwd.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/chrono \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/ratio \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/ctime \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/parse_numbers.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/fs_path.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/locale \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_facets_nonio.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin/bits/time_members.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin/bits/messages_members.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/codecvt.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_facets_nonio.tcc \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_conv.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/iomanip \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/quoted_string.h \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/sstream \
-  /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/sstream.tcc \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/codecvt \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/fs_dir.h \
   /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/fs_ops.h \
@@ -946,6 +966,7 @@ CMakeFiles/TASTSXB.dir/src/marketDataAPI.cpp.o: ../src/marketDataAPI.cpp \
   ../include/nlohmann/detail/macro_unscope.hpp \
   ../include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
   ../include/marketDataAPI.h \
+  ../include/config.h \
   ../include/nlohmann/json.hpp \
   /usr/include/curl/curl.h \
   /usr/include/curl/curlver.h \
@@ -990,8 +1011,6 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 
 /usr/include/sys/time.h:
 
-/usr/include/limits.h:
-
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/syslimits.h:
 
 ../src/tradingAPI.cpp:
@@ -1013,6 +1032,24 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 /usr/include/curl/curlver.h:
 
 /usr/include/curl/curl.h:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_executor.tcc:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex.tcc:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_scanner.tcc:
+
+/usr/include/limits.h:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_automaton.tcc:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_automaton.h:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_error.h:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_constants.h:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/deque:
 
 ../src/marketDataAPI.cpp:
 
@@ -1082,11 +1119,9 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 
 ../include/nlohmann/detail/string_concat.hpp:
 
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/exception:
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_conv.h:
 
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_facets.h:
-
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/istream:
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cstdint:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/basic_string.tcc:
 
@@ -1100,6 +1135,14 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 
 /usr/include/alloca.h:
 
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/vector:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bit:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/map:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/iosfwd:
+
 /usr/include/sys/socket.h:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/std_abs.h:
@@ -1112,6 +1155,12 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 
 /usr/include/sys/_stdint.h:
 
+/usr/include/machine/_time.h:
+
+../include/nlohmann/thirdparty/hedley/hedley_undef.hpp:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_bvector.h:
+
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/alloc_traits.h:
 
 /usr/include/cygwin/time.h:
@@ -1121,6 +1170,8 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/ext/string_conversions.h:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/basic_ios.h:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_compiler.tcc:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin/bits/error_constants.h:
 
@@ -1133,6 +1184,8 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 ../include/nlohmann/detail/meta/std_fs.hpp:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/streambuf_iterator.h:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_vector.h:
 
 ../include/nlohmann/detail/json_ref.hpp:
 
@@ -1166,6 +1219,8 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/debug/debug.h:
 
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_scanner.h:
+
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/ctime:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/ext/alloc_traits.h:
@@ -1177,6 +1232,8 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/pstl/execution_defs.h:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/allocator.h:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_uninitialized.h:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin/bits/os_defines.h:
 
@@ -1195,6 +1252,8 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/predefined_ops.h:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/ext/type_traits.h:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/deque.tcc:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/hashtable_policy.h:
 
@@ -1234,13 +1293,7 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/tr1/exp_integral.tcc:
 
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/tuple:
-
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/ios:
-
-/usr/include/sys/cpuset.h:
-
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/localefwd.h:
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/stack:
 
 /usr/include/sys/ucontext.h:
 
@@ -1276,13 +1329,13 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 
 /usr/include/cygwin/_socketflags.h:
 
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_stack.h:
+
 /usr/include/wchar.h:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin/bits/cpu_defines.h:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/pstl/pstl_config.h:
-
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/fstream:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/ostream_insert.h:
 
@@ -1321,18 +1374,6 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/cpp_type_traits.h:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/valarray_before.h:
-
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_conv.h:
-
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/cstdint:
-
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bit:
-
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/vector:
-
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/iosfwd:
-
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/map:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_function.h:
 
@@ -1390,6 +1431,8 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 
 /usr/include/errno.h:
 
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/regex:
+
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/initializer_list:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/fstream.tcc:
@@ -1397,6 +1440,8 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/charconv.h:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin/bits/c++allocator.h:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_compiler.h:
 
 ../include/nlohmann/detail/iterators/iteration_proxy.hpp:
 
@@ -1414,9 +1459,9 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/system_error:
 
-../include/nlohmann/json_fwd.hpp:
+/usr/include/sys/cpuset.h:
 
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/new:
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/localefwd.h:
 
 /usr/include/machine/ieeefp.h:
 
@@ -1428,7 +1473,29 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/gslice.h:
 
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/fstream:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/istream:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/ios:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/tuple:
+
+../include/nlohmann/detail/meta/void_t.hpp:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_multimap.h:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/exception:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/locale_facets.h:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/new:
+
+../include/nlohmann/json_fwd.hpp:
+
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/typeinfo:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bitset:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/nested_exception.h:
 
@@ -1477,6 +1544,8 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin/bits/basic_file.h:
 
 ../include/nlohmann/json.hpp:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex.h:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/basic_string.h:
 
@@ -1531,20 +1600,6 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/unordered_map.h:
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/erase_if.h:
-
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_uninitialized.h:
-
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_multimap.h:
-
-../include/nlohmann/detail/meta/void_t.hpp:
-
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_vector.h:
-
-/usr/include/machine/_time.h:
-
-../include/nlohmann/thirdparty/hedley/hedley_undef.hpp:
-
-/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_bvector.h:
 
 /usr/include/sys/stdio.h:
 
@@ -1618,6 +1673,8 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/valarray_array.h:
 
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/regex_executor.h:
+
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/valarray_array.tcc:
 
 /usr/include/cygwin/signal.h:
@@ -1633,6 +1690,8 @@ CMakeFiles/TASTSXB.dir/src/utility.cpp.o: ../src/utility.cpp
 /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/mask_array.h:
 
 ../include/nlohmann/detail/exceptions.hpp:
+
+/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/bits/stl_deque.h:
 
 /usr/include/assert.h:
 
