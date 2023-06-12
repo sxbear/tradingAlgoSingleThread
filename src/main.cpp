@@ -17,9 +17,7 @@ int main() {
     // Create MarketDataAPI object
     MarketDataAPI marketDataAPI(apiKey, config);
 
-    // Make API call
-    std::string symbol = "MSFT";
-    auto dataPoints = marketDataAPI.getHistoricalData(symbol, "Daily");
+    auto dataPoints = marketDataAPI.getHistoricalData();
 
     // Check if API call was successful
     if (!dataPoints) {
