@@ -4,7 +4,14 @@
 #include <regex>
 #include "../include/nlohmann/json.hpp"
 #include "../include/marketDataAPI.h"
+#include "../include/dataParser.h"
 #include "curl/curl.h"
+
+MarketDataAPI::MarketDataAPI(std::string const& apiKey, Config const& config)
+    : apiKey(apiKey), config(config)
+{
+    // Constructor implementation (if any)
+}
 
 //helper function to handle the data returned by libcurl
 size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* userp) {
@@ -148,11 +155,10 @@ std::string promptForApiDetails(const std::vector<std::string>& apiUrls, const C
 
 
 
-MarketDataAPI::MarketDataAPI(const std::string& apiKey, const Config& config) : apiKey(apiKey), config(config) {}
-
-std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData(const std::string& symbol, const std::string& interval) {
+std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData() {
     // Initialize libcurl
     CURL* curl = curl_easy_init();
+    DataParser dp;
     if (!curl) {
         std::cerr << "Failed to initialize curl" << std::endl;
         return std::nullopt;
@@ -171,7 +177,6 @@ std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData(con
 
     // Make the request
     CURLcode res = curl_easy_perform(curl);
-    std::cout << "Raw response: " << response << std::endl;
     
     // Check for errors in curl execution
     if (res != CURLE_OK) {
@@ -193,26 +198,51 @@ std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData(con
     // Clean up curl
     curl_easy_cleanup(curl);
 
-    // Parse the JSON response
+    // Try to parse the response as JSON
     try {
-        nlohmann::json jsonResponse = nlohmann::json::parse(response);
-        std::cout << "Formatted JSON response: " << jsonResponse.dump(4) << std::endl;
-        std::vector<MarketDataPoint> dataPoints;
-    
-        for (const auto& [key, value] : jsonResponse["Time Series (Daily)"].items()) {
-            MarketDataPoint point;
-            point.time = key;
-            point.open = std::stod(value["1. open"].get<std::string>());
-            point.high = std::stod(value["2. high"].get<std::string>());
-            point.low = std::stod(value["3. low"].get<std::string>());
-            point.close = std::stod(value["4. close"].get<std::string>());
-            point.volume = std::stol(value["5. volume"].get<std::string>());
-            dataPoints.push_back(point);
+    auto jsonResponse = dp.parseJSON(response);
+    std::vector<MarketDataPoint> dataPoints;
+
+    for (const auto& [date, values] : jsonResponse) {
+        MarketDataPoint point;
+        point.time = date;
+        point.open = values.at("open");
+        point.high = values.at("high");
+        point.low = values.at("low");
+        point.close = values.at("close");
+        point.volume = values.at("volume");
+        dataPoints.push_back(point);
+    }
+
+    return dataPoints;
+} 
+    // If JSON parsing fails, try CSV parsing
+    catch (nlohmann::json::parse_error& e) {
+        try {
+            auto csvResponse = dp.parseCSV(response);
+            std::vector<MarketDataPoint> dataPoints;
+
+            for (const auto& [date, values] : csvResponse) {
+                if (values.size() < 5) {
+                    std::cerr << "Invalid CSV data: insufficient values for date " << date << std::endl;
+                    continue;
+                }
+                MarketDataPoint point;
+                point.time = date;
+                point.open = values[0];
+                point.high = values[1];
+                point.low = values[2];
+                point.close = values[3];
+                point.volume = values[4];
+                dataPoints.push_back(point);
+            }
+
+            return dataPoints;
         }
-    
-        return dataPoints;
-    } catch (nlohmann::json::parse_error& e) {
-        std::cerr << "Failed to parse JSON response: " << e.what() << std::endl;
-        return std::nullopt;
+        catch (std::exception& e) {
+            std::cerr << "Failed to parse the response: " << e.what() << std::endl;
+            return std::nullopt;
+        }
     }
 }
+

@@ -6,6 +6,7 @@
 #include <vector>
 #include "../include/config.h"
 #include "../include/nlohmann/json.hpp"
+#include "../include/dataParser.h"
 
 struct MarketDataPoint {
     std::string time;
@@ -18,10 +19,10 @@ struct MarketDataPoint {
 
 class MarketDataAPI {
 public:
-    MarketDataAPI(const std::string& apiKey, const Config& config);
+    MarketDataAPI(std::string const& apiKey, const Config& config);
 
     // Method to fetch historical market data
-    std::optional<std::vector<MarketDataPoint>> getHistoricalData(const std::string& symbol, const std::string& interval);
+    std::optional<std::vector<MarketDataPoint>> getHistoricalData();
     std::string selectApiUrl(const Config& config);
 
 private:
