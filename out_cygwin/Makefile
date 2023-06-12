@@ -153,6 +153,30 @@ src/config.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TASTSXB.dir/build.make CMakeFiles/TASTSXB.dir/src/config.cpp.s
 .PHONY : src/config.cpp.s
 
+src/dataParser.o: src/dataParser.cpp.o
+.PHONY : src/dataParser.o
+
+# target to build an object file
+src/dataParser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TASTSXB.dir/build.make CMakeFiles/TASTSXB.dir/src/dataParser.cpp.o
+.PHONY : src/dataParser.cpp.o
+
+src/dataParser.i: src/dataParser.cpp.i
+.PHONY : src/dataParser.i
+
+# target to preprocess a source file
+src/dataParser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TASTSXB.dir/build.make CMakeFiles/TASTSXB.dir/src/dataParser.cpp.i
+.PHONY : src/dataParser.cpp.i
+
+src/dataParser.s: src/dataParser.cpp.s
+.PHONY : src/dataParser.s
+
+# target to generate assembly for a file
+src/dataParser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TASTSXB.dir/build.make CMakeFiles/TASTSXB.dir/src/dataParser.cpp.s
+.PHONY : src/dataParser.cpp.s
+
 src/databaseManager.o: src/databaseManager.cpp.o
 .PHONY : src/databaseManager.o
 
@@ -333,6 +357,9 @@ help:
 	@echo "... src/config.o"
 	@echo "... src/config.i"
 	@echo "... src/config.s"
+	@echo "... src/dataParser.o"
+	@echo "... src/dataParser.i"
+	@echo "... src/dataParser.s"
 	@echo "... src/databaseManager.o"
 	@echo "... src/databaseManager.i"
 	@echo "... src/databaseManager.s"
