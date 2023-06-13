@@ -51,8 +51,10 @@ std::map<std::string, std::vector<double>> DataParser::parseCSV(const std::strin
         std::string date;
         std::vector<double> values;
         
-        getline(lineStream, date, ','); // getting date as the first value before comma
+        // getting date as the first value before comma
+        getline(lineStream, date, ',');
         while (getline(lineStream, cell, ',')) {
+            // converting string to double and storing in vector
             values.push_back(std::stod(cell)); // converting string to double and storing in vector
         }
         
@@ -68,8 +70,8 @@ std::map<std::string, std::map<std::string, double>> DataParser::parseJSON(const
     // parse string to JSON
     nlohmann::json jsonData = nlohmann::json::parse(data);
 
+    // parse each sub-JSON object to a map of string and double
     for(auto& [date, value] : jsonData.items()){
-        // parse each sub-JSON object to a map of string and double
         for(auto& [field, num] : value.items()){
             result[date][field] = num.get<double>();
         }

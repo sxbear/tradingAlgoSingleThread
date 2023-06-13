@@ -7,11 +7,7 @@
 #include "../include/dataParser.h"
 #include "curl/curl.h"
 
-MarketDataAPI::MarketDataAPI(std::string const& apiKey, Config const& config)
-    : apiKey(apiKey), config(config)
-{
-    // Constructor implementation (if any)
-}
+MarketDataAPI::MarketDataAPI(std::string const& apiKey, Config const& config) : apiKey(apiKey), config(config){}
 
 //helper function to handle the data returned by libcurl
 size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* userp) {
@@ -154,7 +150,7 @@ std::string promptForApiDetails(const std::vector<std::string>& apiUrls, const C
 }
 
 
-
+//retrieves historical data
 std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData() {
     // Initialize libcurl
     CURL* curl = curl_easy_init();

@@ -6,7 +6,7 @@
 
 int main() {
     // Load configuration
-    Config config("../JSON/config.json"); // Pass in the config filename here
+    Config config("../JSON/config.json");
     // Verify if the file was read successfully
     if (!config.isFileRead()) {
         std::cerr << "Failed to read config file" << std::endl;
