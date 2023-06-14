@@ -154,7 +154,6 @@ std::string promptForApiDetails(const std::vector<std::string>& apiUrls, const C
 std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData() {
     // Initialize libcurl
     CURL* curl = curl_easy_init();
-    DataParser dp;
     if (!curl) {
         std::cerr << "Failed to initialize curl" << std::endl;
         return std::nullopt;
@@ -194,65 +193,82 @@ std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData() {
     // Clean up curl
     curl_easy_cleanup(curl);
 
+    //ADD CHECKS ON URL TO GIVE CORRECT RESPONSE
+    //TODO NEXT: 
+
+
     // Try to parse the response as JSON
     try {
-        nlohmann::json jsonResponse = nlohmann::json::parse(response);
-        std::vector<MarketDataPoint> dataPoints;
-        std::cout << "Formatted JSON response: " << jsonResponse.dump(4) << std::endl;
-
-        for (auto& element : jsonResponse.items()) {
-            std::string key = element.key();
-
-            // Check if the key contains the substring "Time Series"
-            if (key.find("Time Series") != std::string::npos && element.value().is_object()) {
-                auto timeSeries = element.value();
-
-                for (const auto& pair : timeSeries.items()) {
-                    const auto& date = pair.key();
-                    const auto& value = pair.value();
-
-                    MarketDataPoint point;
-                    point.time = date;
-                    point.open = std::stod(value.at("1. open").get<std::string>());
-                    point.high = std::stod(value.at("2. high").get<std::string>());
-                    point.low = std::stod(value.at("3. low").get<std::string>());
-                    point.close = std::stod(value.at("4. close").get<std::string>());
-                    point.volume = std::stod(value.at("5. volume").get<std::string>());
-
-                    dataPoints.push_back(point);
-                }
-            }
-        }       
-
+        DataParser parser;
+        std::vector<MarketDataPoint> dataPoints = parseMarketDataJSON(response);
         return dataPoints;
     }
     // If JSON parsing fails, try CSV parsing
     catch (nlohmann::json::parse_error& e) {
-        try {
-            auto csvResponse = dp.parseCSV(response);
-            std::vector<MarketDataPoint> dataPoints;
-
-            for (const auto& [date, values] : csvResponse) {
-                if (values.size() < 5) {
-                    std::cerr << "Invalid CSV data: insufficient values for date " << date << std::endl;
-                    continue;
-                }
-                MarketDataPoint point;
-                point.time = date;
-                point.open = values[0];
-                point.high = values[1];
-                point.low = values[2];
-                point.close = values[3];
-                point.volume = values[4];
-                dataPoints.push_back(point);
-            }
-
-            return dataPoints;
-        }
-        catch (std::exception& e) {
-            std::cerr << "Failed to parse the response: " << e.what() << std::endl;
-            return std::nullopt;
-        }
+        DataParser parser;
+        std::vector<MarketDataPoint> dataPoints = parseMarketDataCSV(response);
+        return dataPoints;
     }
 }
 
+std::vector<MarketDataPoint> MarketDataAPI::parseMarketDataJSON(const std::string& response) {
+    nlohmann::json jsonResponse = nlohmann::json::parse(response);
+    std::vector<MarketDataPoint> dataPoints;
+    std::cout << "Formatted JSON response: " << jsonResponse.dump(4) << std::endl;
+
+    for (auto& element : jsonResponse.items()) {
+        std::string key = element.key();
+
+        // Check if the key contains the substring "Time Series"
+        if (key.find("Time Series") != std::string::npos && element.value().is_object()) {
+            auto timeSeries = element.value();
+
+            for (const auto& pair : timeSeries.items()) {
+                const auto& date = pair.key();
+                const auto& value = pair.value();
+
+                MarketDataPoint point;
+                point.time = date;
+                point.open = std::stod(value.at("1. open").get<std::string>());
+                point.high = std::stod(value.at("2. high").get<std::string>());
+                point.low = std::stod(value.at("3. low").get<std::string>());
+                point.close = std::stod(value.at("4. close").get<std::string>());
+                point.volume = std::stod(value.at("5. volume").get<std::string>());
+
+                dataPoints.push_back(point);
+            }
+        }
+    }
+
+    return dataPoints;
+}
+
+std::vector<MarketDataPoint> MarketDataAPI::parseMarketDataCSV(const std::string& response) {
+try {
+    DataParser dp;
+    auto csvResponse = dp.parseCSV(response);
+    std::vector<MarketDataPoint> dataPoints;
+
+    for (const auto& [date, values] : csvResponse) {
+        if (values.size() < 5) {
+            std::cerr << "Invalid CSV data: insufficient values for date " << date << std::endl;
+            continue;
+        }
+        MarketDataPoint point;
+        point.time = date;
+        point.open = values[0];
+        point.high = values[1];
+        point.low = values[2];
+        point.close = values[3];
+        point.volume = values[4];
+        dataPoints.push_back(point);
+    }
+
+    return dataPoints;
+}
+    catch (std::exception& e) {
+        std::vector<MarketDataPoint> dataPoints;
+        std::cerr << "Failed to parse the response: " << e.what() << std::endl;
+        return dataPoints;
+    }
+}

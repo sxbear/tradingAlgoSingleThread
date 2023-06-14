@@ -2,6 +2,7 @@
 #include <sstream>
 #include <iostream>
 #include <nlohmann/json.hpp>
+#include "../include/marketDataAPI.h"
 
 double DataParser::parseStringToDouble(const std::string& str) {
     try {
@@ -79,4 +80,3 @@ std::map<std::string, std::map<std::string, double>> DataParser::parseJSON(const
 
     return result;
 }
-

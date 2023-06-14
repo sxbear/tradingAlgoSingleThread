@@ -24,6 +24,8 @@ public:
     // Method to fetch historical market data
     std::optional<std::vector<MarketDataPoint>> getHistoricalData();
     std::string selectApiUrl(const Config& config);
+    std::vector<MarketDataPoint> parseMarketDataJSON(const std::string& response);
+    std::vector<MarketDataPoint> parseMarketDataCSV(const std::string& response);
 
 private:
     std::string apiKey;
