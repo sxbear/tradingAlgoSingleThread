@@ -10,13 +10,13 @@
 MarketDataAPI::MarketDataAPI(std::string const& apiKey, Config const& config) : apiKey(apiKey), config(config){}
 
 //helper function to handle the data returned by libcurl
-size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* userp) {
+size_t MarketDataAPI::WriteCallback(void* contents, size_t size, size_t nmemb, std::string* userp) {
     userp->append((char*)contents, size * nmemb);
     return size * nmemb;
 }
 
 //helper function regex for user menu options
-std::vector<std::string> menuChoices(const std::vector<std::string>& apiUrls) {
+std::vector<std::string> MarketDataAPI::menuChoices(const std::vector<std::string>& apiUrls) {
     std::vector<std::string> results;
     std::regex r("function=([^&]*)");
 
@@ -32,7 +32,7 @@ std::vector<std::string> menuChoices(const std::vector<std::string>& apiUrls) {
 }
 
 //helper function for user api choice
-int getUserSelection(const std::vector<std::string>& apiUrls) {
+int MarketDataAPI::getUserSelection(const std::vector<std::string>& apiUrls) {
     int userSelection = -1;
 
     // Get the function parts of the URLs
@@ -64,7 +64,7 @@ std::string MarketDataAPI::selectApiUrl(const Config& config) {
 }
 
 //helper to complete api url
-std::string promptForApiDetails(const std::vector<std::string>& apiUrls, const Config& config) {
+std::string MarketDataAPI::promptForApiDetails(const std::vector<std::string>& apiUrls, const Config& config) {
     int selection = getUserSelection(apiUrls);
     std::string selectedApi = menuChoices(apiUrls)[selection];
 
@@ -149,8 +149,138 @@ std::string promptForApiDetails(const std::vector<std::string>& apiUrls, const C
     return formattedUrl;
 }
 
+std::vector<MarketDataPoint> MarketDataAPI::parseMarketDataJSON(const std::string& response) {
+    nlohmann::json jsonResponse = nlohmann::json::parse(response);
+    std::vector<MarketDataPoint> dataPoints;
+    std::cout << "Formatted JSON response: " << jsonResponse.dump(4) << std::endl;
 
-//retrieves historical data
+    for (auto& element : jsonResponse.items()) {
+        std::string key = element.key();
+
+        // Check if the key contains the substring "Time Series"
+        if (key.find("Time Series") != std::string::npos && element.value().is_object()) {
+            auto timeSeries = element.value();
+
+            for (const auto& pair : timeSeries.items()) {
+                const auto& date = pair.key();
+                const auto& value = pair.value();
+
+                MarketDataPoint point;
+                point.time = date;
+                point.open = std::stod(value.at("1. open").get<std::string>());
+                point.high = std::stod(value.at("2. high").get<std::string>());
+                point.low = std::stod(value.at("3. low").get<std::string>());
+                point.close = std::stod(value.at("4. close").get<std::string>());
+                point.volume = std::stod(value.at("5. volume").get<std::string>());
+
+                dataPoints.push_back(point);
+            }
+        }
+    }
+
+    return dataPoints;
+}
+
+std::vector<MarketDataPoint> MarketDataAPI::parseMarketDataCSV(const std::string& response) {
+    try {
+        DataParser dp;
+        auto csvResponse = dp.parseCSV(response);
+        std::vector<MarketDataPoint> dataPoints;
+
+        for (const auto& [date, values] : csvResponse) {
+            if (values.size() < 5) {
+                std::cerr << "Invalid CSV data: insufficient values for date " << date << std::endl;
+                continue;
+            }
+            MarketDataPoint point;
+            point.time = date;
+            point.open = values[0];
+            point.high = values[1];
+            point.low = values[2];
+            point.close = values[3];
+            point.volume = values[4];
+            dataPoints.push_back(point);
+        }
+
+        return dataPoints;
+    }
+    catch (std::exception& e) {
+        std::vector<MarketDataPoint> dataPoints;
+        std::cerr << "Failed to parse the response: " << e.what() << std::endl;
+        return dataPoints;
+    }
+}
+
+std::vector<MarketDataPoint> MarketDataAPI::parseIntradayResponse(const std::string& response) {
+    // Try to parse the response as JSON
+    try {
+        std::vector<MarketDataPoint> dataPoints = this->parseMarketDataJSON(response);
+        return dataPoints;
+    }
+    // If JSON parsing fails, try CSV parsing
+    catch (nlohmann::json::parse_error& e) {
+        std::vector<MarketDataPoint> dataPoints = this->parseMarketDataCSV(response);
+        return dataPoints;
+    }
+}
+
+std::vector<MarketDataPoint> MarketDataAPI::parseDailyResponse(const std::string& response) {
+    // Try to parse the response as JSON
+    try {
+        std::vector<MarketDataPoint> dataPoints = this->parseMarketDataJSON(response);
+        return dataPoints;
+    }
+    // If JSON parsing fails, try CSV parsing
+    catch (nlohmann::json::parse_error& e) {
+        std::vector<MarketDataPoint> dataPoints = this->parseMarketDataCSV(response);
+        return dataPoints;
+    }
+}
+
+std::vector<MarketDataPoint> MarketDataAPI::parseWeeklyResponse(const std::string& response) {
+    // Try to parse the response as JSON
+    try {
+        std::vector<MarketDataPoint> dataPoints = this->parseMarketDataJSON(response);
+        return dataPoints;
+    }
+    // If JSON parsing fails, try CSV parsing
+    catch (nlohmann::json::parse_error& e) {
+        std::vector<MarketDataPoint> dataPoints = this->parseMarketDataCSV(response);
+        return dataPoints;
+    }
+}
+
+std::vector<MarketDataPoint> MarketDataAPI::parseMonthlyResponse(const std::string& response) {
+    // Try to parse the response as JSON
+    try {
+        std::vector<MarketDataPoint> dataPoints = this->parseMarketDataJSON(response);
+        return dataPoints;
+    }
+    // If JSON parsing fails, try CSV parsing
+    catch (nlohmann::json::parse_error& e) {
+        std::vector<MarketDataPoint> dataPoints = this->parseMarketDataCSV(response);
+        return dataPoints;
+    }
+}
+
+std::vector<MarketDataPoint> MarketDataAPI::parseResponseBasedOnURL(const std::string& url, const std::string& response) {
+    if (url.find("INTRADAY") != std::string::npos) {
+        return parseIntradayResponse(response);
+    } 
+    else if (url.find("DAILY") != std::string::npos) {
+        return parseDailyResponse(response);
+    } 
+    else if (url.find("WEEKLY") != std::string::npos) {
+        return parseWeeklyResponse(response);
+    } 
+    else if (url.find("MONTHLY") != std::string::npos) {
+        return parseMonthlyResponse(response);
+    } 
+    else {
+        // Handle the case when the URL type is not one of the expected ones
+    }
+}
+
 std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData() {
     // Initialize libcurl
     CURL* curl = curl_easy_init();
@@ -195,80 +325,63 @@ std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData() {
 
     //ADD CHECKS ON URL TO GIVE CORRECT RESPONSE
     //TODO NEXT: 
-
-
+    if (url.find("INTRADAY") != std::string::npos){
     // Try to parse the response as JSON
-    try {
-        DataParser parser;
-        std::vector<MarketDataPoint> dataPoints = parseMarketDataJSON(response);
-        return dataPoints;
-    }
-    // If JSON parsing fails, try CSV parsing
-    catch (nlohmann::json::parse_error& e) {
-        DataParser parser;
-        std::vector<MarketDataPoint> dataPoints = parseMarketDataCSV(response);
-        return dataPoints;
-    }
-}
-
-std::vector<MarketDataPoint> MarketDataAPI::parseMarketDataJSON(const std::string& response) {
-    nlohmann::json jsonResponse = nlohmann::json::parse(response);
-    std::vector<MarketDataPoint> dataPoints;
-    std::cout << "Formatted JSON response: " << jsonResponse.dump(4) << std::endl;
-
-    for (auto& element : jsonResponse.items()) {
-        std::string key = element.key();
-
-        // Check if the key contains the substring "Time Series"
-        if (key.find("Time Series") != std::string::npos && element.value().is_object()) {
-            auto timeSeries = element.value();
-
-            for (const auto& pair : timeSeries.items()) {
-                const auto& date = pair.key();
-                const auto& value = pair.value();
-
-                MarketDataPoint point;
-                point.time = date;
-                point.open = std::stod(value.at("1. open").get<std::string>());
-                point.high = std::stod(value.at("2. high").get<std::string>());
-                point.low = std::stod(value.at("3. low").get<std::string>());
-                point.close = std::stod(value.at("4. close").get<std::string>());
-                point.volume = std::stod(value.at("5. volume").get<std::string>());
-
-                dataPoints.push_back(point);
-            }
+        try {
+            DataParser parser;
+            std::vector<MarketDataPoint> dataPoints = parseMarketDataJSON(response);
+            return dataPoints;
+        }
+        // If JSON parsing fails, try CSV parsing
+        catch (nlohmann::json::parse_error& e) {
+            DataParser parser;
+            std::vector<MarketDataPoint> dataPoints = parseMarketDataCSV(response);
+            return dataPoints;
         }
     }
 
-    return dataPoints;
-}
-
-std::vector<MarketDataPoint> MarketDataAPI::parseMarketDataCSV(const std::string& response) {
-try {
-    DataParser dp;
-    auto csvResponse = dp.parseCSV(response);
-    std::vector<MarketDataPoint> dataPoints;
-
-    for (const auto& [date, values] : csvResponse) {
-        if (values.size() < 5) {
-            std::cerr << "Invalid CSV data: insufficient values for date " << date << std::endl;
-            continue;
+    if (url.find("DAILY") != std::string::npos){
+    // Try to parse the response as JSON
+        try {
+            DataParser parser;
+            std::vector<MarketDataPoint> dataPoints = parseMarketDataJSON(response);
+            return dataPoints;
         }
-        MarketDataPoint point;
-        point.time = date;
-        point.open = values[0];
-        point.high = values[1];
-        point.low = values[2];
-        point.close = values[3];
-        point.volume = values[4];
-        dataPoints.push_back(point);
+        // If JSON parsing fails, try CSV parsing
+        catch (nlohmann::json::parse_error& e) {
+            DataParser parser;
+            std::vector<MarketDataPoint> dataPoints = parseMarketDataCSV(response);
+            return dataPoints;
+        }
     }
 
-    return dataPoints;
-}
-    catch (std::exception& e) {
-        std::vector<MarketDataPoint> dataPoints;
-        std::cerr << "Failed to parse the response: " << e.what() << std::endl;
-        return dataPoints;
+    if (url.find("WEEKLY") != std::string::npos){
+    // Try to parse the response as JSON
+        try {
+            DataParser parser;
+            std::vector<MarketDataPoint> dataPoints = parseMarketDataJSON(response);
+            return dataPoints;
+        }
+        // If JSON parsing fails, try CSV parsing
+        catch (nlohmann::json::parse_error& e) {
+            DataParser parser;
+            std::vector<MarketDataPoint> dataPoints = parseMarketDataCSV(response);
+            return dataPoints;
+        }
+    }
+
+    if (url.find("MONTHLY") != std::string::npos){
+    // Try to parse the response as JSON
+        try {
+            DataParser parser;
+            std::vector<MarketDataPoint> dataPoints = parseMarketDataJSON(response);
+            return dataPoints;
+        }
+        // If JSON parsing fails, try CSV parsing
+        catch (nlohmann::json::parse_error& e) {
+            DataParser parser;
+            std::vector<MarketDataPoint> dataPoints = parseMarketDataCSV(response);
+            return dataPoints;
+        }
     }
 }
