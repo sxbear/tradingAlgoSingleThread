@@ -196,22 +196,36 @@ std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData() {
 
     // Try to parse the response as JSON
     try {
-    auto jsonResponse = dp.parseJSON(response);
-    std::vector<MarketDataPoint> dataPoints;
+        nlohmann::json jsonResponse = nlohmann::json::parse(response);
+        std::vector<MarketDataPoint> dataPoints;
+        std::cout << "Formatted JSON response: " << jsonResponse.dump(4) << std::endl;
 
-    for (const auto& [date, values] : jsonResponse) {
-        MarketDataPoint point;
-        point.time = date;
-        point.open = values.at("open");
-        point.high = values.at("high");
-        point.low = values.at("low");
-        point.close = values.at("close");
-        point.volume = values.at("volume");
-        dataPoints.push_back(point);
+        for (auto& element : jsonResponse.items()) {
+            std::string key = element.key();
+
+            // Check if the key contains the substring "Time Series"
+            if (key.find("Time Series") != std::string::npos && element.value().is_object()) {
+                auto timeSeries = element.value();
+
+                for (const auto& pair : timeSeries.items()) {
+                    const auto& date = pair.key();
+                    const auto& value = pair.value();
+
+                    MarketDataPoint point;
+                    point.time = date;
+                    point.open = std::stod(value.at("1. open").get<std::string>());
+                    point.high = std::stod(value.at("2. high").get<std::string>());
+                    point.low = std::stod(value.at("3. low").get<std::string>());
+                    point.close = std::stod(value.at("4. close").get<std::string>());
+                    point.volume = std::stod(value.at("5. volume").get<std::string>());
+
+                    dataPoints.push_back(point);
+                }
+            }
+        }       
+
+        return dataPoints;
     }
-
-    return dataPoints;
-} 
     // If JSON parsing fails, try CSV parsing
     catch (nlohmann::json::parse_error& e) {
         try {
