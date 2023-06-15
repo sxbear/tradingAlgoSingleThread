@@ -149,6 +149,63 @@ std::string promptForApiDetails(const std::vector<std::string>& apiUrls, const C
     return formattedUrl;
 }
 
+std::vector<MarketDataPoint> parseIntradayResponse(const std::string& response) {
+    // Try to parse the response as JSON
+    std::cout << "parsing JSON intra" << std::endl;
+    std::vector<MarketDataPoint> dataPoints;
+    return dataPoints;
+}
+
+std::vector<MarketDataPoint> parseDailyResponse(const std::string& response) {
+    // Try to parse the response as JSON
+    std::cout << "parsing JSON daily" << std::endl;
+    std::vector<MarketDataPoint> dataPoints;
+    return dataPoints;
+}
+
+std::vector<MarketDataPoint> parseWeeklyResponse(const std::string& response) {
+    // Try to parse the response as JSON
+    std::cout << "parsing JSON weekly" << std::endl;
+    std::vector<MarketDataPoint> dataPoints;
+    return dataPoints;
+}
+
+std::vector<MarketDataPoint> parseMonthlyResponse(const std::string& response) {
+    // Try to parse the response as JSON
+    std::cout << "parsing JSON monthly" << std::endl;
+    std::vector<MarketDataPoint> dataPoints;
+    return dataPoints;
+}
+
+std::vector<MarketDataPoint> parseGqResponse(const std::string& response) {
+    // Try to parse the response as JSON
+    std::cout << "parsing JSON gq" << std::endl;
+    std::vector<MarketDataPoint> dataPoints;
+    return dataPoints;
+}
+
+std::vector<MarketDataPoint> parseResponseBasedOnURL(const std::string& url, const std::string& response) {
+    std::cout << "parsing on url..." + url << std::endl;
+    if (url.find("INTRADAY") != std::string::npos) {
+        return parseIntradayResponse(response);
+    } 
+    else if (url.find("DAILY") != std::string::npos) {
+        return parseDailyResponse(response);
+    } 
+    else if (url.find("WEEKLY") != std::string::npos) {
+        return parseWeeklyResponse(response);
+    } 
+    else if (url.find("MONTHLY") != std::string::npos) {
+        return parseMonthlyResponse(response);
+    }
+    else if (url.find("GLOBAL_QUOTE") != std::string::npos) {
+        return parseGqResponse(response);
+    }
+    else { 
+        std::vector<MarketDataPoint> dataPoints;
+        return dataPoints;
+    }
+}
 
 //retrieves historical data
 std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData() {
@@ -191,9 +248,12 @@ std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData() {
         return std::nullopt;
     }
 
+    if (response.find("premium") != std::string::npos) {
+        std::cout << "This is a premium endpoint.  An upgraded API key will need to be used." << std::endl;
+        return std::nullopt;
+    }
     // Clean up curl
     curl_easy_cleanup(curl);
-
     // Try to parse the response as JSON
     try {
         nlohmann::json jsonResponse = nlohmann::json::parse(response);
@@ -202,9 +262,27 @@ std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData() {
 
         for (auto& element : jsonResponse.items()) {
             std::string key = element.key();
+            
+            // Global Quote handling
+            if (key == "Global Quote") {
+                auto globalQuote = element.value();
+                
+                MarketDataPoint point;
+                point.symbol = globalQuote.at("01. symbol").get<std::string>();
+                point.open = std::stod(globalQuote.at("02. open").get<std::string>());
+                point.high = std::stod(globalQuote.at("03. high").get<std::string>());
+                point.low = std::stod(globalQuote.at("04. low").get<std::string>());
+                point.price = std::stod(globalQuote.at("05. price").get<std::string>());
+                point.volume = std::stod(globalQuote.at("06. volume").get<std::string>());
+                point.latestTradingDay = globalQuote.at("07. latest trading day").get<std::string>();
+                point.previousClose = std::stod(globalQuote.at("08. previous close").get<std::string>());
+                point.change = std::stod(globalQuote.at("09. change").get<std::string>());
+                point.changePercent = globalQuote.at("10. change percent").get<std::string>();
 
-            // Check if the key contains the substring "Time Series"
-            if (key.find("Time Series") != std::string::npos && element.value().is_object()) {
+                dataPoints.push_back(point);
+            } 
+            // Time Series handling
+            else if (key.find("Time Series") != std::string::npos && element.value().is_object()) {
                 auto timeSeries = element.value();
 
                 for (const auto& pair : timeSeries.items()) {
@@ -217,13 +295,27 @@ std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData() {
                     point.high = std::stod(value.at("2. high").get<std::string>());
                     point.low = std::stod(value.at("3. low").get<std::string>());
                     point.close = std::stod(value.at("4. close").get<std::string>());
-                    point.volume = std::stod(value.at("5. volume").get<std::string>());
+
+                    if (value.contains("5. volume")) {
+                        point.volume = std::stod(value.at("5. volume").get<std::string>());
+                    }
+                    if (value.contains("5. adjusted close")) {
+                        point.adjustedClose = std::stod(value.at("5. adjusted close").get<std::string>());
+                    }
+                    if (value.contains("6. volume")) {
+                        point.volume = std::stod(value.at("6. volume").get<std::string>());
+                    }
+                    if (value.contains("7. dividend amount")) {
+                        point.dividendAmount = std::stod(value.at("7. dividend amount").get<std::string>());
+                    }
+                    if (value.contains("8. split coefficient")) {
+                        point.splitCoefficient = std::stod(value.at("8. split coefficient").get<std::string>());
+                    }
 
                     dataPoints.push_back(point);
                 }
             }
-        }       
-
+        }     
         return dataPoints;
     }
     // If JSON parsing fails, try CSV parsing

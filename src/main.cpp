@@ -25,15 +25,45 @@ int main() {
         return 1;
     }
     // Print out data points
-    for (const auto& point : *dataPoints) {
-        std::cout << "Time: " << point.time << std::endl;
-        std::cout << "Open: " << point.open << std::endl;
-        std::cout << "High: " << point.high << std::endl;
-        std::cout << "Low: " << point.low << std::endl;
-        std::cout << "Close: " << point.close << std::endl;
-        std::cout << "Volume: " << point.volume << std::endl;
-        std::cout << std::endl;
+    for (const auto& dataPoint : *dataPoints) {
+        std::cout << "Time: " << dataPoint.time << '\n'
+                << "Open: " << dataPoint.open << '\n'
+                << "High: " << dataPoint.high << '\n'
+                << "Low: " << dataPoint.low << '\n'
+                << "Close: " << dataPoint.close << '\n'
+                << "Volume: " << dataPoint.volume << '\n';
+
+        if (dataPoint.adjustedClose) {
+            std::cout << "Adjusted Close: " << *dataPoint.adjustedClose << '\n';
+        }
+        if (dataPoint.dividendAmount) {
+            std::cout << "Dividend Amount: " << *dataPoint.dividendAmount << '\n';
+        }
+        if (dataPoint.splitCoefficient) {
+            std::cout << "Split Coefficient: " << *dataPoint.splitCoefficient << '\n';
+        }
+        if (dataPoint.symbol) {
+            std::cout << "Symbol: " << *dataPoint.symbol << '\n';
+        }
+        if (dataPoint.price) {
+            std::cout << "Price: " << *dataPoint.price << '\n';
+        }
+        if (dataPoint.latestTradingDay) {
+            std::cout << "Latest Trading Day: " << *dataPoint.latestTradingDay << '\n';
+        }
+        if (dataPoint.previousClose) {
+            std::cout << "Previous Close: " << *dataPoint.previousClose << '\n';
+        }
+        if (dataPoint.change) {
+            std::cout << "Change: " << *dataPoint.change << '\n';
+        }
+        if (dataPoint.changePercent) {
+            std::cout << "Change Percent: " << *dataPoint.changePercent << '\n';
+        }
+
+        std::cout << std::endl;  // End each data point with a newline for readability
     }
+
 
     return 0;
 }
