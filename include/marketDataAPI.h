@@ -15,7 +15,19 @@ struct MarketDataPoint {
     double low;
     double close;
     long volume;
+    std::optional<double> adjustedClose;
+    std::optional<double> dividendAmount;
+    std::optional<double> splitCoefficient;
+
+    // Global Quote-specific fields
+    std::optional<std::string> symbol;
+    std::optional<double> price;
+    std::optional<std::string> latestTradingDay;
+    std::optional<double> previousClose;
+    std::optional<double> change;
+    std::optional<std::string> changePercent;
 };
+
 
 class MarketDataAPI {
 public:
@@ -24,8 +36,6 @@ public:
     // Method to fetch historical market data
     std::optional<std::vector<MarketDataPoint>> getHistoricalData();
     std::string selectApiUrl(const Config& config);
-    std::vector<MarketDataPoint> parseMarketDataJSON(const std::string& response);
-    std::vector<MarketDataPoint> parseMarketDataCSV(const std::string& response);
 
 private:
     std::string apiKey;

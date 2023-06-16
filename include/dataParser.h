@@ -4,8 +4,6 @@
 #include <string>
 #include <map>
 #include <vector>
-#include "../include/marketDataAPI.h"
-#include "../include/nlohmann/json.hpp"
 
 class DataParser {
 public:

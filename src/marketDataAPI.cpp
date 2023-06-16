@@ -5,66 +5,13 @@
 #include "../include/nlohmann/json.hpp"
 #include "../include/marketDataAPI.h"
 #include "../include/dataParser.h"
+#include "../include/utility.h"
 #include "curl/curl.h"
 
 MarketDataAPI::MarketDataAPI(std::string const& apiKey, Config const& config) : apiKey(apiKey), config(config){}
 
-//helper function to handle the data returned by libcurl
-size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* userp) {
-    userp->append((char*)contents, size * nmemb);
-    return size * nmemb;
-}
-
-//helper function regex for user menu options
-std::vector<std::string> menuChoices(const std::vector<std::string>& apiUrls) {
-    std::vector<std::string> results;
-    std::regex r("function=([^&]*)");
-
-    for (const auto& url : apiUrls) {
-        std::smatch match;
-        if (std::regex_search(url, match, r) && match.size() > 1) {
-            // The first sub_match is the whole string; the next
-            // sub_match is the first parenthesized expression.
-            results.push_back(match.str(1));
-        }
-    }
-    return results;
-}
-
-//helper function for user api choice
-int getUserSelection(const std::vector<std::string>& apiUrls) {
-    int userSelection = -1;
-
-    // Get the function parts of the URLs
-    std::vector<std::string> apiFunctions = menuChoices(apiUrls);
-
-    while (userSelection < 0 || userSelection >= apiFunctions.size()) {
-        std::cout << "Please select an API (enter the number): " << std::endl;
-        for (int i = 0; i < apiFunctions.size(); ++i) {
-            // Display the function part of the URL instead of "API i+1"
-            std::cout << i+1 << ". " << apiFunctions[i] << std::endl;
-        }
-        std::cin >> userSelection;
-        // Adjust for 0-based indexing
-        userSelection--;
-        if (userSelection < 0 || userSelection >= apiFunctions.size()) {
-            std::cout << "Invalid selection. Please try again." << std::endl;
-        }
-    }
-    return userSelection;
-}
-
-
-//helper function for selecting api url
-std::string MarketDataAPI::selectApiUrl(const Config& config) {
-    // Get the URLs from the config
-    std::vector<std::string> apiUrls = config.getAllApiUrls();
-    int userSelection = getUserSelection(apiUrls);
-    return apiUrls[userSelection];
-}
-
 //helper to complete api url
-std::string promptForApiDetails(const std::vector<std::string>& apiUrls, const Config& config) {
+std::string promptForHistoricalInfo(const std::vector<std::string>& apiUrls, const Config& config) {
     int selection = getUserSelection(apiUrls);
     std::string selectedApi = menuChoices(apiUrls)[selection];
 
@@ -137,74 +84,10 @@ std::string promptForApiDetails(const std::vector<std::string>& apiUrls, const C
         std::cin >> symbol;
         formattedUrl += "&symbol=" + symbol;
     }
-    else if (selectedApi.find("GLOBAL_QUOTE") != std::string::npos) {
-        std::string symbol;
-        std::cout << "Please enter a symbol for " << selectedApi << " (e.g., MSFT, AAPL, AMZN, NVDA, TSLA): ";
-        std::cin >> symbol;
-        formattedUrl += "&symbol=" + symbol;
-    }
 
     // You can continue adding more conditions here to handle different APIs
     formattedUrl += "&apikey=" + apiKey;
     return formattedUrl;
-}
-
-std::vector<MarketDataPoint> parseIntradayResponse(const std::string& response) {
-    // Try to parse the response as JSON
-    std::cout << "parsing JSON intra" << std::endl;
-    std::vector<MarketDataPoint> dataPoints;
-    return dataPoints;
-}
-
-std::vector<MarketDataPoint> parseDailyResponse(const std::string& response) {
-    // Try to parse the response as JSON
-    std::cout << "parsing JSON daily" << std::endl;
-    std::vector<MarketDataPoint> dataPoints;
-    return dataPoints;
-}
-
-std::vector<MarketDataPoint> parseWeeklyResponse(const std::string& response) {
-    // Try to parse the response as JSON
-    std::cout << "parsing JSON weekly" << std::endl;
-    std::vector<MarketDataPoint> dataPoints;
-    return dataPoints;
-}
-
-std::vector<MarketDataPoint> parseMonthlyResponse(const std::string& response) {
-    // Try to parse the response as JSON
-    std::cout << "parsing JSON monthly" << std::endl;
-    std::vector<MarketDataPoint> dataPoints;
-    return dataPoints;
-}
-
-std::vector<MarketDataPoint> parseGqResponse(const std::string& response) {
-    // Try to parse the response as JSON
-    std::cout << "parsing JSON gq" << std::endl;
-    std::vector<MarketDataPoint> dataPoints;
-    return dataPoints;
-}
-
-std::vector<MarketDataPoint> parseResponseBasedOnURL(const std::string& url, const std::string& response) {
-    std::cout << "parsing on url..." + url << std::endl;
-    if (url.find("INTRADAY") != std::string::npos) {
-        return parseIntradayResponse(response);
-    } 
-    else if (url.find("DAILY") != std::string::npos) {
-        return parseDailyResponse(response);
-    } 
-    else if (url.find("WEEKLY") != std::string::npos) {
-        return parseWeeklyResponse(response);
-    } 
-    else if (url.find("MONTHLY") != std::string::npos) {
-        return parseMonthlyResponse(response);
-    }
-    else if (url.find("GLOBAL_QUOTE") != std::string::npos) {
-        return parseGqResponse(response);
-    }
-    else { 
-        std::vector<MarketDataPoint> dataPoints;
-        return dataPoints;
-    }
 }
 
 //retrieves historical data
@@ -218,7 +101,7 @@ std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData() {
     }
 
     // Create the URL for the API request
-    std::string url = promptForApiDetails(config.getAllApiUrls(), config);
+    std::string url = promptForHistoricalInfo(config.getAllApiUrls(), config);
 
     // Set up libcurl to make the request
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
@@ -347,4 +230,3 @@ std::optional<std::vector<MarketDataPoint>> MarketDataAPI::getHistoricalData() {
         }
     }
 }
-
