@@ -18,14 +18,6 @@ struct MarketDataPoint {
     std::optional<double> adjustedClose;
     std::optional<double> dividendAmount;
     std::optional<double> splitCoefficient;
-
-    // Global Quote-specific fields
-    std::optional<std::string> symbol;
-    std::optional<double> price;
-    std::optional<std::string> latestTradingDay;
-    std::optional<double> previousClose;
-    std::optional<double> change;
-    std::optional<std::string> changePercent;
 };
 
 
